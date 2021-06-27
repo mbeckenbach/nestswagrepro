@@ -51,7 +51,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/site.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -121,7 +121,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/site.scss"
             ],
             "scripts": []
           }
