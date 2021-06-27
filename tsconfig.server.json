@@ -3,8 +3,9 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app-server",
     "module": "commonjs",
-    "types": ["node"],
-    "emitDecoratorMetadata": true,
+    "types": [
+      "node"
+    ],
     "experimentalDecorators": true
   },
   "files": ["src/main.server.ts", "server.ts"],
