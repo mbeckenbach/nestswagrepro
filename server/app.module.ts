@@ -8,7 +8,10 @@ import { HelloController } from './hello/hello.controller';
   imports: [
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
-      viewsPath: join(process.cwd(), 'dist/ati-translate/browser')
+      viewsPath: join(process.cwd(), 'dist/ati-translate/browser'),
+      extraProviders: [
+        // Do not remove. Causes that REQUEST is not injected
+      ]
     })
   ],
   controllers: [HelloController]

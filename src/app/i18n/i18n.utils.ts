@@ -9,6 +9,8 @@ export enum WebsiteLanguage {
   German = 'de',
 }
 
+export const DefaultWebsiteLanguage = WebsiteLanguage.English;
+
 /**
  * Inferring the type of default translation (in this case english)
  * This makes type available for type checking of injected translations

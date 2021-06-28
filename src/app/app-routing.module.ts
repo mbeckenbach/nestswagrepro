@@ -6,7 +6,6 @@ const routes: Routes = [
   // Routes to language modules
   { path: WebsiteLanguage.English, loadChildren: () => import('./i18n/en.module').then(m => m.SiteEnModule) },
   { path: WebsiteLanguage.German, loadChildren: () => import('./i18n/de.module').then(m => m.SiteDeModule) },
-  { path: '**', redirectTo: WebsiteLanguage.English } // Redirect to default language
 ];
 
 @NgModule({

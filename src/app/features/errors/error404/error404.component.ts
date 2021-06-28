@@ -1,5 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Optional, PLATFORM_ID } from '@angular/core';
 import { TRANSLATION, Translation } from '../../../i18n/i18n.utils';
+import { RESPONSE } from '@nestjs/ng-universal/dist/tokens';
+import { Response } from 'express';
+import { isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'app-error404',
@@ -16,7 +19,18 @@ export class Error404Component {
   /**
    * Constructor
    * @param translation Global translation file
+   * @param response Express response
+   * @param platformId Angular Platform
    */
-  constructor(@Inject(TRANSLATION) private readonly translation: Translation) { }
+  constructor(
+    @Inject(TRANSLATION) private readonly translation: Translation,
+    @Optional() @Inject(RESPONSE) response: Response,
+    @Inject(PLATFORM_ID) platformId: any,
+  ) {
+    // Send clean status code
+    if (isPlatformServer(platformId)) {
+      response.status(404);
+    }
+  }
 
 }
