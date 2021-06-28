@@ -3,11 +3,11 @@ import { en } from './en.translation';
 export const de = {
   ...en, // Inherit from default language
   language: 'Deutsch',
-  home: {
+  public: {
     title: 'Home funktioniert!',
   },
-  info: {
-    title: 'Info funktioniert!',
+  admin: {
+    title: 'Admin funktioniert!',
   },
   features: {
     errors: {

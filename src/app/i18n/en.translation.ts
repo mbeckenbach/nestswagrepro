@@ -1,10 +1,10 @@
 export const en = {
   language: 'English',
-  home: {
+  public: {
     title: 'Home works!',
   },
-  info: {
-    title: 'Info works!',
+  admin: {
+    title: 'Admin works!',
   },
   features: {
     errors: {

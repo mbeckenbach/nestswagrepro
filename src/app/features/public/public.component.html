@@ -1,3 +1,10 @@
-<p>public works!</p>
+<mat-toolbar>
+  <span>Ati Translate</span>
 
-<button color="primary" mat-raised-button>Test</button>
+  <a mat-button routerLink="/">Public</a>
+  <a mat-button routerLink="admin">Admin</a>
+</mat-toolbar>
+
+<p>{{lang.public.title}}</p>
+
+<button (click)="testApi()" color="primary" mat-raised-button>Test api</button>

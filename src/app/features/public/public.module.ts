@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CoreModule } from '../../core/core.module';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     PublicRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    CoreModule,
   ]
 })
 export class PublicModule {}
