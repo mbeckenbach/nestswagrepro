@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
-import { HelloController } from './hello/hello.controller';
+import { HelloModule } from './hello/hello.module';
 
 @Module({
   imports: [
@@ -12,8 +12,9 @@ import { HelloController } from './hello/hello.controller';
       extraProviders: [
         // Do not remove. Causes that REQUEST is not injected
       ]
-    })
+    }),
+    HelloModule
   ],
-  controllers: [HelloController]
+  controllers: []
 })
 export class AppModule {}
