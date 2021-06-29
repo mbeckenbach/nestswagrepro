@@ -1,0 +1,21 @@
+<ng-container *ngIf="control?.hasError('required')">
+  {{ translations.formValidation.required }}
+</ng-container>
+<ng-container *ngIf="control?.hasError('pattern')">
+  {{ translations.formValidation.pattern }}
+</ng-container>
+<ng-container *ngIf="control?.hasError('min')">
+  {{ translations.formValidation.min(control.errors['min']['min']) }}
+</ng-container>
+<ng-container *ngIf="control?.hasError('max')">
+  {{ translations.formValidation.max(control.errors['max']['max']) }}
+</ng-container>
+<ng-container *ngIf="control?.hasError('existingPatient')">
+  {{ translations.formValidation.existingPatient }}
+</ng-container>
+<ng-container *ngIf="control?.hasError('patientIsAdmitted')">
+  {{ translations.formValidation.patientIsAdmitted }}
+</ng-container>
+<ng-container *ngIf="control?.hasError('mask')">
+  {{ translations.formValidation.pattern }}
+</ng-container>

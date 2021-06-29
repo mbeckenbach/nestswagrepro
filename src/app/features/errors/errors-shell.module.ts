@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ErrorsShellRoutingModule } from './errors-shell-routing.module';
 import { Error404Component } from './error404/error404.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -10,7 +10,7 @@ import { Error404Component } from './error404/error404.component';
     Error404Component,
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     ErrorsShellRoutingModule
   ]
 })
