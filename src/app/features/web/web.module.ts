@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PublicRoutingModule } from './public-routing.module';
-import { PublicComponent } from './public.component';
+import { WebRoutingModule } from './web-routing.module';
+import { WebShellComponent } from './web-shell.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CoreModule } from '../../core/core.module';
 
 
 @NgModule({
   declarations: [
-    PublicComponent
+    WebShellComponent
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule,
+    WebRoutingModule,
     MatButtonModule,
     MatToolbarModule,
-    CoreModule,
   ]
 })
-export class PublicModule {}
+export class WebModule {}

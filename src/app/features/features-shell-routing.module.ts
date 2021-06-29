@@ -5,9 +5,9 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: '', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
+      { path: '', loadChildren: () => import('./web/web.module').then(m => m.WebModule) },
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-      { path: 'error', loadChildren: () => import('./errors/errors.module').then(m => m.ErrorsModule) },
+      { path: 'error', loadChildren: () => import('./errors/errors-shell.module').then(m => m.ErrorsShellModule) },
       { path: '**', redirectTo: 'error/404' }
     ]
   }
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FeaturesRoutingModule {}
+export class FeaturesShellRoutingModule {}

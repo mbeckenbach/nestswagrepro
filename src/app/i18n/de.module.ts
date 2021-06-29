@@ -4,7 +4,7 @@ import localeDe from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { de } from './de.translation';
 import { TRANSLATION } from './i18n.utils';
-import { FeaturesModule } from '../features/features.module';
+import { FeaturesShellModule } from '../features/features-shell.module';
 
 registerLocaleData(localeDe);
 
@@ -13,11 +13,11 @@ registerLocaleData(localeDe);
  *
  * Another good examples of what should be here are locales for MomentJS, Timezones
  *
- * Site module should be imported here
+ * The features shell module should be imported here
  */
 @NgModule({
   imports: [
-    FeaturesModule,
+    FeaturesShellModule,
   ],
   providers: [
     // providing the value of english translation data

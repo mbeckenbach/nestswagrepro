@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ErrorsRoutingModule } from './errors-routing.module';
+import { ErrorsShellRoutingModule } from './errors-shell-routing.module';
 import { Error404Component } from './error404/error404.component';
 
 
@@ -11,7 +11,7 @@ import { Error404Component } from './error404/error404.component';
   ],
   imports: [
     CommonModule,
-    ErrorsRoutingModule
+    ErrorsShellRoutingModule
   ]
 })
-export class ErrorsModule {}
+export class ErrorsShellModule {}

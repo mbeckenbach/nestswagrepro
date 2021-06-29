@@ -5,6 +5,7 @@ export class HelloController {
 
   @Get()
   getAll(): any {
+    console.log('Hello called');
     return { hello: 'world' };
   }
 

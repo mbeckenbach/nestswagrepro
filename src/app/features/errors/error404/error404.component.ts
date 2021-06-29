@@ -4,6 +4,9 @@ import { RESPONSE } from '@nestjs/ng-universal/dist/tokens';
 import { Response } from 'express';
 import { isPlatformServer } from '@angular/common';
 
+/**
+ * 404 Error Page
+ */
 @Component({
   selector: 'app-error404',
   templateUrl: './error404.component.html',
