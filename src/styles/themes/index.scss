@@ -1,3 +1,9 @@
+@use '~@angular/material' as mat;
 @use "light" as lightTheme;
+@use "dark" as darkTheme;
 
 @include lightTheme.build();
+
+.app-dark-theme {
+  @include darkTheme.build();
+}

@@ -11,6 +11,8 @@ import { DefaultWebsiteLanguage, WebsiteLanguage } from '../../i18n/i18n.utils';
 @Injectable()
 export class LanguageDetectionService {
 
+  // TODO: Language should be saved and restored once user manually changes
+
   /**
    * Constructor
    * @param platformId Angular platform ID

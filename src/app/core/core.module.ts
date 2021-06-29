@@ -5,6 +5,7 @@ import { ServerStateInterceptor } from './interceptors/server-state.interceptor'
 import { BrowserStateInterceptor } from './interceptors/browser-state.interceptor';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 import { LanguageDetectionService } from './services/language-detection.service';
+import { LayoutModule } from '@angular/cdk/layout';
 
 /**
  * Providers shared by server and browser instance
@@ -26,9 +27,11 @@ const coreProviders: Provider[] = [
   imports: [
     CommonModule,
     HttpClientModule,
+    LayoutModule,
   ],
   exports: [
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule,
   ]
 })
 export class CoreModule {
