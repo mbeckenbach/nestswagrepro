@@ -17,6 +17,5 @@ export const de = {
     }
   },
   // simple function using string literal and interpolation
-  // see the cs.translation.ts for another example
-  langsSupported: (n: number) => `This demo supports ${n} language${n === 1 ? '' : 's'}.`,
+  langsSupported: (n: number) => `Diese Demo unterstützt ${n} Sprache${n === 1 ? '' : 'n'}.`,
 };
