@@ -5,6 +5,9 @@ import { AllowAnonymous } from '../auth.constants';
 import { JwtLoginResult } from '../models/jwt-login-result';
 import { UserProfile } from '../../models/user-profile';
 
+// TODO: Jwt implementation is super simple. Add refresh tokens, etc.
+// https://javascript.plainenglish.io/nestjs-implementing-access-refresh-token-jwt-authentication-97a39e448007
+
 @Controller('auth')
 export class AuthController {
 

@@ -1,12 +1,26 @@
 import { SetMetadata } from '@nestjs/common';
 
+/**
+ * Key for reading the decorator
+ */
 export const ALLOW_ANONYMOUS_KEY = 'allowAnonymous';
+
+/**
+ * Allows anonymous access to a route
+ */
 export const AllowAnonymous = () => SetMetadata(ALLOW_ANONYMOUS_KEY, true);
 
-// TODO: Do not expose this key publicly
-// We have done so here to make it clear what the code is doing,
-// but in a production system you must protect this key using appropriate measures such as a
-// secrets vault, environment variable, or configuration service.
+/**
+ * Constants for JWT
+ */
 export const jwtConstants = {
+  /**
+   * Private token signing key
+   * TODO: Move to env variable, vault, or anything more secure
+   */
   secret: 'secretKey',
+  /**
+   * Token expires in ? seconds
+   */
+  expiresIn: 60,
 };
