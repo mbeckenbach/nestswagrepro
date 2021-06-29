@@ -1,3 +1,10 @@
+import { environmentBase } from './environment.base';
+
+/**
+ * Production environment
+ */
 export const environment = {
-  production: true
+  ...environmentBase,
+  production: true,
+  // TODO: Set production baseUrl
 };
