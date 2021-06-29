@@ -13,6 +13,7 @@ export class AuthController {
   @AllowAnonymous()
   @UseGuards(LocalAuthGuard)
   @Post('login')
+  // TODO Add proper model binding & validation
   async login(@Request() req): Promise<JwtLoginResult> {
     return this.authService.login(req.user);
   }
