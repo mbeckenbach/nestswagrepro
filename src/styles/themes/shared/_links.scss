@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $accent: map.get($color-config, 'accent');
+
+  a, a:link, a:active, a:hover, a:visited {
+    &:not(.mat-button) {
+      color: mat.get-color-from-palette($accent);
+    }
+  }
+
+  a:hover {
+    &:not(.mat-button) {
+      text-decoration: underline;
+    }
+  }
+}

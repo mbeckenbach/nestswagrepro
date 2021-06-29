@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $warn: map.get($color-config, 'warn');
+  $success: map.get($color-config, 'success');
+  $is-dark: map.get($color-config, 'is-dark');
+
+  .mat-flat-button, .mat-raised-button, .mat-button {
+    text-transform: uppercase;
+
+    .mat-icon {
+      margin-right: 8px;
+    }
+  }
+
+  .mat-button {
+    @if $is-dark {
+      color: #fff !important;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@use 'sass:map';
+@use '~@angular/material' as mat;
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $color-config: mat.get-color-config($theme);
+  $primary: map.get($color-config, 'primary');
+  $accent: map.get($color-config, 'accent');
+  $warn: map.get($color-config, 'warn');
+  $success: map.get($color-config, 'success');
+  $is-dark: map.get($color-config, 'is-dark');
+
+  ////////////////////////// Foregrounds
+
+  .text-primary {
+    color: mat.get-color-from-palette($primary);
+  }
+
+  .text-accent {
+    color: mat.get-color-from-palette($accent);
+  }
+
+  .text-warn {
+    color: mat.get-color-from-palette($warn);
+  }
+
+  .text-success {
+    color: mat.get-color-from-palette($success);
+  }
+
+  .text-muted {
+    opacity: .54;
+  }
+
+  ////////////////////// Backgrounds
+
+  .bg-primary {
+    background-color: mat.get-color-from-palette($primary);
+    color: mat.get-color-from-palette($primary, default-contrast);
+  }
+
+  .bg-accent {
+    background-color: mat.get-color-from-palette($accent);
+    color: mat.get-color-from-palette($accent, default-contrast);
+  }
+
+  .bg-warn {
+    background-color: mat.get-color-from-palette($warn);
+    color: mat.get-color-from-palette($warn, default-contrast);
+  }
+
+  .bg-success {
+    background-color: mat.get-color-from-palette($success);
+    color: mat.get-color-from-palette($success, default-contrast);
+  }
+
+}

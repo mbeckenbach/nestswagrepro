@@ -1,0 +1,7 @@
+// imports for other components in your app.
+@use 'shared' as shared;
+
+@mixin theme($theme) {
+  // Apply the mixins
+  @include shared.theme($theme);
+}

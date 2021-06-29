@@ -1,0 +1,12 @@
+// Common
+@use "colors" as colors;
+@use "links" as links;
+@use "buttons" as buttons;
+
+// Apply mixins
+@mixin theme($theme) {
+  // Common
+  @include colors.theme($theme);
+  @include links.theme($theme);
+  @include buttons.theme($theme);
+}
