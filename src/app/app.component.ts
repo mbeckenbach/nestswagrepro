@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { LanguageDetectionService } from './core/services/language-detection.service';
 
 /**
@@ -10,6 +10,8 @@ import { LanguageDetectionService } from './core/services/language-detection.ser
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  @HostBinding('class.mat-app-background') appBackground = true;
 
   /**
    * @param languageDetectionService LanguageDetectionService
