@@ -16,9 +16,11 @@ const routes: Routes = [
  * AppRoutingModule
  */
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled' // Needed for SSR to work
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabled' // Needed for SSR to work
+    })
+  ],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
