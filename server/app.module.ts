@@ -2,11 +2,7 @@ import { Module } from '@nestjs/common';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
-import { HelloModule } from './hello/hello.module';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
-import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
-import { APP_GUARD } from '@nestjs/core';
+import { HelloModule } from './modules/hello/hello.module';
 
 @Module({
   imports: [
@@ -18,14 +14,6 @@ import { APP_GUARD } from '@nestjs/core';
       ]
     }),
     HelloModule,
-    AuthModule,
-    UsersModule
   ],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,
-    },
-  ]
 })
 export class AppModule {}
