@@ -13,6 +13,7 @@ import { map, switchMap } from 'rxjs/operators';
 export class ThemeService {
 
   // TODO: Theme settings should be saved and restore once user manually changes
+  // TODO: Remember last OS setting to avoid dark theme flashing at least for second load
 
   /**
    * Internal hold to use dark theme or not
