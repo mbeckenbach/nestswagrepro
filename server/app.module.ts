@@ -3,6 +3,8 @@ import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
 import { HelloModule } from './modules/hello/hello.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { HelloModule } from './modules/hello/hello.module';
       ]
     }),
     HelloModule,
+    AuthModule,
+    UsersModule,
   ],
 })
 export class AppModule {}

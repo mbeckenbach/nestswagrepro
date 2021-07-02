@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('hello')
 export class HelloController {
@@ -7,6 +8,12 @@ export class HelloController {
   getAll(): any {
     console.log('Hello called');
     return { hello: 'world' };
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('todos')
+  getTodos(): any {
+    return ['Watch Movie', 'Take Health Test', 'Play Cricket'];
   }
 
 }
