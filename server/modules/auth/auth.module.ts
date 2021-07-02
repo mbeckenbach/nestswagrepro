@@ -6,6 +6,7 @@ import { LocalStrategy } from './local.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
+import { JwtRefreshTokenStrategy } from './jwt.refresh-token.strategy';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { JwtStrategy } from './jwt.strategy';
       // TODO: Move out of code
       secret: 'My Secret Never let outsiders',
       signOptions: {
-        expiresIn: '60s'
+        expiresIn: '60m'
       }
     }),
   ],
@@ -23,6 +24,7 @@ import { JwtStrategy } from './jwt.strategy';
     AuthService,
     LocalStrategy,
     JwtStrategy,
+    JwtRefreshTokenStrategy,
   ],
   exports: [AuthService], // TODO: Check if really needed
   controllers: [AuthController]

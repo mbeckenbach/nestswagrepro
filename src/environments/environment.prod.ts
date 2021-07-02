@@ -6,5 +6,6 @@ import { environmentBase } from './environment.base';
 export const environment = {
   ...environmentBase,
   production: true,
+  baseUrl: 'http://localhost:4000'
   // TODO: Set production baseUrl
 };

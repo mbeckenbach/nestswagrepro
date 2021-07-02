@@ -6,6 +6,7 @@ import { HelloModule } from './modules/hello/hello.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './modules/users/user';
 
 @Module({
   imports: [
@@ -24,7 +25,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'sa',
       password: 'Meister07',
       database: 'devtest',
-      entities: [],
+      entities: [
+        User
+      ],
       extra: {
         options: {
           // TODO: Should be true at azure

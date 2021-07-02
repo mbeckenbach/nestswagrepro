@@ -11,8 +11,14 @@ export class AuthController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req): Promise<any> {
-    return this.authService.login({ userId: req.user.id, userName: req.user.username });
+  async login(@Request() req): Promise<{ accessToken: string; refreshToken: string }> {
+    return this.authService.login({ userId: req.user.id, username: req.user.username });
+  }
+
+  @UseGuards(AuthGuard('jwt-refresh-token'))
+  @Post('refresh-token')
+  async refreshToken(@Request() req): Promise<{ accessToken: string; refreshToken: string }> {
+    return await this.authService.login(req.user);
   }
 
 }
