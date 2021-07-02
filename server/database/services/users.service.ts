@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './user';
+import { User } from '../models/user';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -7,32 +7,32 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class UsersService {
 
   constructor(
-    @InjectRepository(User) private userRepo: Repository<User>
+    @InjectRepository(User) private userRepository: Repository<User>
   ) {
   }
 
   async findById(id: number): Promise<User | undefined> {
-    return await this.userRepo.findOne(id);
+    return await this.userRepository.findOne(id);
   }
 
   async validateCredentials(username: string, passwordHash: string): Promise<{ id: number, username: string }> {
     // TODO: Replace clear text password by hash
-    return await this.userRepo.findOne({ select: ['id', 'username'], where: { username, password: passwordHash } });
+    return await this.userRepository.findOne({ select: ['id', 'username'], where: { username, password: passwordHash } });
   }
 
   async findByRefreshToken(id: number, refreshToken: string): Promise<{ refreshToken: string, refreshTokenExpires: Date }> {
-    return await this.userRepo.findOne({ select: ['refreshToken', 'refreshTokenExpires'], where: { id } });
+    return await this.userRepository.findOne({ select: ['refreshToken', 'refreshTokenExpires'], where: { id, refreshToken } });
   }
 
   async findByUsername(username: string): Promise<User | undefined> {
-    return await this.userRepo.findOne({ username });
+    return await this.userRepository.findOne({ username });
   }
 
   async saveOrUpdateRefreshToken(
     userId: number,
     refreshToken: string,
     refreshTokenExpires: Date): Promise<void> {
-    await this.userRepo.update(userId, { refreshToken, refreshTokenExpires });
+    await this.userRepository.update(userId, { refreshToken, refreshTokenExpires });
   }
 
 }

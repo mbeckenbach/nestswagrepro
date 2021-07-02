@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../../../database/services/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as randtoken from 'rand-token';
 
@@ -10,7 +10,7 @@ export class AuthService {
               private jwtService: JwtService) {
   }
 
-  async validateUser(username: string, passwordHash: string): Promise<any> {
+  async validateUser(username: string, passwordHash: string): Promise<{ id: number, username: string }> {
     // TODO: Replace clear text password by hash
     return await this.usersService.validateCredentials(username, passwordHash);
   }
