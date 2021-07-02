@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Request } from '@nestjs/common';
 import { AllowAnonymous } from '../../auth/decorators/allow-anonymous.decorator';
 
 @Controller('hello')
@@ -6,7 +6,7 @@ export class HelloController {
 
   @AllowAnonymous()
   @Get()
-  getAll(): any {
+  getAll(@Request() req): any {
     console.log('Hello called');
     return { hello: 'world' };
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UsersService } from '../../../database/services/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as randtoken from 'rand-token';
+import { TokensModel } from '../models/tokens.model';
 
 @Injectable()
 export class AuthService {
@@ -15,8 +16,9 @@ export class AuthService {
     return await this.usersService.validateCredentials(username, passwordHash);
   }
 
-  async login(user: { userId: number, username: string }): Promise<{ accessToken: string, refreshToken: string }> {
+  async login(user: { userId: number, username: string }): Promise<TokensModel> {
     const payload = { username: user.username, sub: user.userId };
+
     return {
       accessToken: this.jwtService.sign(payload),
       refreshToken: await this.generateRefreshToken(user.userId)

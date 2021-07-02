@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import * as helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
@@ -24,6 +25,8 @@ async function bootstrap(): Promise<void> {
     }
   }));
 
+  // TODO: Make app secret an env setting
+  app.use(cookieParser('app-secret')); // adds cookies to request object
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalGuards(new JwtAuthGuard(new Reflector()));
 
