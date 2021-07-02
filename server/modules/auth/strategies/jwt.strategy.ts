@@ -1,8 +1,7 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { Injectable } from '@nestjs/common';
-
-// TODO: Check https://github.com/codebarista/passport-jwt-cookiecombo for SSR
+import { Inject, Injectable } from '@nestjs/common';
+import { JWT_SECRET } from '../auth.constants';
 
 /**
  * Extracts the jwt from a cookie
@@ -18,7 +17,7 @@ const cookieExtractor = (req) => {
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(@Inject('JWT_SECRET') jwtSecret: string) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         // Take jwt from http header
@@ -28,8 +27,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         cookieExtractor
       ]),
       ignoreExpiration: false,
-      // TODO: Map to value configured in auth-module
-      secretOrKey: 'My Secret Never let outsiders',
+      secretOrKey: jwtSecret,
     });
   }
 

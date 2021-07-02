@@ -7,16 +7,16 @@ import { JwtRefreshTokenStrategy } from './strategies/jwt.refresh-token.strategy
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './controllers/auth.controller';
 import { Module } from '@nestjs/common';
+import { JWT_EXPIRES_IN, JWT_SECRET } from './auth.constants';
 
 @Module({
   imports: [
     DatabaseModule,
     PassportModule,
     JwtModule.register({
-      // TODO: Move out of code
-      secret: 'My Secret Never let outsiders',
+      secret: JWT_SECRET,
       signOptions: {
-        expiresIn: '60m'
+        expiresIn: JWT_EXPIRES_IN
       }
     }),
   ],
@@ -25,6 +25,10 @@ import { Module } from '@nestjs/common';
     LocalStrategy,
     JwtStrategy,
     JwtRefreshTokenStrategy,
+    {
+      provide: 'JWT_SECRET',
+      useValue: JWT_SECRET
+    }
   ],
   controllers: [AuthController]
 })
