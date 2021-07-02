@@ -23,15 +23,7 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req, @Res({ passthrough: true }) res: Response): Promise<TokensModel> {
-
-    // Generate access tokens
-    const tokens = await this.authService.login({ userId: req.user.id, username: req.user.username });
-
-    // Send tokens as cookies for local SSR website
-    this.setJwtCookies(res, tokens);
-
-    // Return tokens for native apps
-    return tokens;
+    return await this.handleLogin(req.user.id, req.user.username, res);
   }
 
 
@@ -45,19 +37,21 @@ export class AuthController {
   @UseGuards(JwtRefreshAuthGuard)
   @Post('refresh-token')
   async refreshToken(@Request() req, @Res({ passthrough: true }) res: Response): Promise<TokensModel> {
-
-    // Generate access tokens
-    const tokens = await this.authService.login(req.user);
-
-    // Send tokens as cookies for local SSR website
-    this.setJwtCookies(res, tokens);
-
-    // Return tokens for native apps
-    return tokens;
+    return await this.handleLogin(req.user.id, req.user.username, res);
   }
 
-  // noinspection JSMethodCanBeStatic
-  private setJwtCookies(res: Response, tokens: TokensModel): void {
+  /**
+   * Creates access tokens and handles login
+   * @param userId
+   * @param username
+   * @param res
+   * @private
+   */
+  private async handleLogin(userId: number, username: string, res: Response): Promise<TokensModel> {
+    // Generate access tokens
+    const tokens = await this.authService.login(userId, username);
+
+    // Send tokens as cookies for local SSR website
     res.cookie('jwt', tokens.accessToken, {
       httpOnly: true,
       sameSite: true,
@@ -71,6 +65,9 @@ export class AuthController {
       signed: true,
       secure: true
     });
+
+    // Return tokens for native apps
+    return tokens;
   }
 
 }

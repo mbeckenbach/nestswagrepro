@@ -22,6 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         // Take jwt from http header
+        // TODO: Remove if there is no need for a native app auth
         ExtractJwt.fromAuthHeaderAsBearerToken(),
         // Take jwt from cookie
         cookieExtractor

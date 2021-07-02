@@ -16,12 +16,12 @@ export class AuthService {
     return await this.usersService.validateCredentials(username, passwordHash);
   }
 
-  async login(user: { userId: number, username: string }): Promise<TokensModel> {
-    const payload = { username: user.username, sub: user.userId };
+  async login(userId: number, username: string): Promise<TokensModel> {
+    const payload = { username, sub: userId };
 
     return {
       accessToken: this.jwtService.sign(payload),
-      refreshToken: await this.generateRefreshToken(user.userId)
+      refreshToken: await this.generateRefreshToken(userId)
     };
   }
 
