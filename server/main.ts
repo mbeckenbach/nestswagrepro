@@ -1,15 +1,22 @@
-import { NestFactory, Reflector } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
-import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
-import * as cookieParser from 'cookie-parser';
-import { COOKIE_SECRET } from './modules/auth/auth.constants';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix('api');
+
+  const config = new DocumentBuilder()
+    .setTitle('Cats example')
+    .setDescription('The cats API description')
+    .setVersion('1.0')
+    .addTag('cats')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   app.use(helmet({
     contentSecurityPolicy: {
@@ -27,9 +34,7 @@ async function bootstrap(): Promise<void> {
     }
   }));
 
-  app.use(cookieParser(COOKIE_SECRET));
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
-  app.useGlobalGuards(new JwtAuthGuard(new Reflector()));
 
   await app.listen(process.env.PORT || 4000);
 }
